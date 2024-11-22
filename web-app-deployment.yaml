@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-app-deployment
+spec:
+  replicas: 2  # Number of replicas (pods) you want to run
+  selector:
+    matchLabels:
+      app: my-web-app
+  template:
+    metadata:
+      labels:
+        app: my-web-app
+    spec:
+      containers:
+      - name: my-web-app
+        image: 025066276001.dkr.ecr.ap-southeast-1.amazonaws.com/my-web-app:latest  # Replace with your ECR URI
+        ports:
+        - containerPort: 80  # Exposing port 80 from the container
+
